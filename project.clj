@@ -4,13 +4,13 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure       "1.8.0"]
-                 [org.clojure/clojurescript "1.7.228"]
-                 [org.clojure/core.async    "0.2.374"]
-                 [reagent                   "0.6.0-alpha"]]
+  :dependencies [[org.clojure/clojure       "1.8.0"  ]
+                 [org.clojure/clojurescript "1.9.229"]
+                 [org.clojure/core.async    "0.2.395"]
+                 [reagent                   "0.6.0"  ]]
 
-  :plugins      [[lein-cljsbuild            "1.1.2"]
-                 [lein-figwheel             "0.5.0-6"]]
+  :plugins      [[lein-cljsbuild            "1.1.4"]
+                 [lein-figwheel             "0.5.8"]]
 
   :source-paths ["src"]
 
