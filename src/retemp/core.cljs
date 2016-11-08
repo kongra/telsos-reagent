@@ -10,11 +10,11 @@
 
 (defn hidbutton
   [label]
-  (let [hidden? (r/atom false)]
+  (let [isHidden (r/atom false)]
     (fn []
-      (when-not @hidden?
+      (when-not @isHidden
         [:button.btn.btn-warning
-         {:on-click #(reset! hidden? true) :type "button"} label]))))
+         {:on-click #(reset! isHidden true) :type "button"} label]))))
 
 (def ^:private counter (r/atom 0))
 
