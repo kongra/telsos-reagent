@@ -19,9 +19,7 @@
   :cljsbuild {
     :builds [{:id "dev"
               :source-paths ["src"]
-
               :figwheel {:on-jsload            "retemp.core/on-js-reload"}
-
               :compiler {:main                 retemp.core
                          :asset-path           "js/compiled/out"
                          :output-to            "resources/public/js/compiled/retemp.js"
