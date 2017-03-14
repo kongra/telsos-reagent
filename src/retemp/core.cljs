@@ -20,12 +20,12 @@
 
 (defn main-view []
   [:div.container
-   [:h2 (str "Kliknąłeś " @counter " razy.")]
-   [:button.btn.btn-success {:on-click #(swap!  counter inc) :type "button"} "Zwiększ"]
-   [:button.btn.btn-danger  {:on-click #(reset! counter 0  ) :type "button"} "Zeruj"  ]
+   [:h2 (str "You've clicked " @counter " times.")]
+   [:button.btn.btn-success {:on-click #(swap!  counter inc) :type "button"} "Increase"]
+   [:button.btn.btn-danger  {:on-click #(reset! counter 0  ) :type "button"} "Zero"  ]
 
-   [hidbutton "Schowaj mnie!!!"]
-   [hidbutton "Nieee !!!"]])
+   [hidbutton "Hide me !!!"]
+   [hidbutton "Noooo !!!"]])
 
 ;; INSTRUMENTATION
 
