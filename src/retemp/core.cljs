@@ -22,10 +22,9 @@
   [:div.container
    [:h2 (str "You've clicked " @counter " times.")]
    [:button.btn.btn-success {:on-click #(swap!  counter inc) :type "button"} "Increase"]
-   [:button.btn.btn-danger  {:on-click #(reset! counter 0  ) :type "button"} "Zero"  ]
-
+   [:button.btn.btn-danger  {:on-click #(reset! counter   0) :type "button"}     "Zero"]
    [hidbutton "Hide me !!!"]
-   [hidbutton "Noooo !!!"]])
+   [hidbutton   "Noooo !!!"]])
 
 ;; INSTRUMENTATION
 
