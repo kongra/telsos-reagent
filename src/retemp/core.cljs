@@ -66,13 +66,13 @@
       (<! (timeout  200)) (>! c 25)
       (<! (timeout  356)) (>! c 26)))
 
-(defn events-chan
+#_ (defn events-chan
   [element event-type]
   (let [c (chan 100)]
     (.addEventListener element event-type (fn [e] (put! c e)))
     c))
 
-(let [mouse-c (events-chan js/window "mousemove")]
+#_ (let [mouse-c (events-chan js/window "mousemove")]
   (go
     (while true
       (.log js/console (<! mouse-c)))))
