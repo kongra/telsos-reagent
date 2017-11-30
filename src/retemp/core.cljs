@@ -1,11 +1,8 @@
 (ns ^:figwheel-always retemp.core
   (:require [reagent.core    :as     r]
-            ;; [cljs.core.async :refer [<! >! put! chan timeout]]
-            )
+            [cljs.core.async :refer [<! >! put! chan timeout]])
 
-  ;; (:require-macros [cljs.core.async.macros :refer [go alt! go-loop]])
-
-  )
+  (:require-macros [cljs.core.async.macros :refer [go alt! go-loop]]))
 
 (enable-console-print!)
 
@@ -25,7 +22,7 @@
   [:div.container
    [:h2 (str "You've clicked " @counter " times.")]
    [:button.btn.btn-success {:on-click #(swap!  counter inc) :type "button"} "Add One"]
-   [:button.btn.btn-danger  {:on-click #(reset! counter   0) :type "button"} "Zero@@@"]
+   [:button.btn.btn-danger  {:on-click #(reset! counter   0) :type "button"} "Zero"]
    [hidbutton "Hide me !!!"]
    [hidbutton   "Noooo !!!"]])
 
