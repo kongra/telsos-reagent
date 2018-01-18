@@ -7,7 +7,7 @@
   :dependencies [[org.clojure/clojure       "1.9.0"  ]
                  [reagent                   "0.7.0"  ]
                  [org.clojure/clojurescript "1.9.946"]
-                 [org.clojure/core.async    "0.3.465"]]
+                 [org.clojure/core.async    "0.4.474"]]
 
   :plugins      [[lein-cljsbuild            "1.1.7"]
                  [lein-figwheel             "0.5.14"]]
@@ -15,6 +15,10 @@
   :source-paths ["src"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+
+  ;; Only until javax.xml.bind.DatatypeConverter dep. deprecated in Java 9
+  ;; will be removed from figwheel
+  :jvm-opts ["--add-modules" "java.xml.bind"]
 
   :cljsbuild {
     :builds [{:id "dev"
