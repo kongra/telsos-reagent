@@ -41,55 +41,57 @@
   (init))
 
 ;; ;; ASYNC
-;; ;;
-;; (let [c (chan)]
-;;   (go
-;;     (.log js/console "--2-start")
-;;     (>! c 15)
-;;     (>! c 16)
-;;     (.log js/console "--2-end"))
+;;
+#_ (let [c (chan)]
+     (go
+       (println "writer: start")
+       (>! c 15)
+       (println "writer: wrote 15")
+       (>! c 16)
+       (println "writer: wrote 16")
+       (println "writer: end"))
 
-;;   (go
-;;     (.log js/console "--1-start")
-;;     (.log js/console (<! c))
-;;     (.log js/console (<! c))
-;;     (.log js/console "--1-end")))
+     (go
+       (println "reader: start")
+       (println "reader: got" (<! c))
+       (println "reader: got" (<! c))
+       (println "reader: end")))
 
-;; ;; (go
-;; ;;   (.log js/console "Hello")
-;; ;;   (<! (timeout 2000))
-;; ;;   (.log js/console "async")
-;; ;;   (<! (timeout 2000))
-;; ;;   (.log js/console "world!"))
+#_ (go
+     (.log js/console "Hello")
+     (<! (timeout 2000))
+     (.log js/console "async")
+     (<! (timeout 2000))
+     (.log js/console "world!"))
 
-;; ;; (let [c (chan)
-;; ;;       t (timeout 2000)]
-;; ;;   (go
-;; ;;     (alt!
-;; ;;       c (.log js/console "Odebrałem wartość z kanału c")
-;; ;;       t (.log js/console "Upłynął czas 2s")))
+#_ (let [c (chan)
+         t (timeout 2000)]
+     (go
+       (alt!
+         c (.log js/console "Odebrałem wartość z kanału c")
+         t (.log js/console "Upłynął czas 2s")))
 
-;; ;;   (go
-;; ;;     (<! (timeout 3000))
-;; ;;     (>! c 23)
-;; ;;     ))
+     (go
+       (<! (timeout 1000))
+       (>! c 23)
+       ))
 
-;; ;; (let [c (chan)
-;; ;;       t (timeout 2000)]
-;; ;;   (go
-;; ;;     (alt!
-;; ;;       c ([v] (.log js/console (str "Odebrałem wartość " v " z kanału c")))
-;; ;;       t ([v] (.log js/console (str "Upłynął czas 2s po których odebrałem " v)))))
+(let [c (chan)
+      t (timeout 2000)]
+  (go
+    (alt!
+      c ([v] (.log js/console (str "Odebrałem wartość " v " z kanału c")))
+      t ([v] (.log js/console (str "Upłynął czas 2s po których odebrałem " v)))))
 
-;; ;;   ;; (go (<! (timeout 1000)) (>! c 23))
-;; ;;   ;; (go (<! (timeout  900)) (>! c 24))
-;; ;;   ;; (go (<! (timeout  200)) (>! c 25))
-;; ;;   ;; (go (<! (timeout  356)) (>! c 26))
+  (go (<! (timeout 1000)) (>! c 23))
+  (go (<! (timeout  900)) (>! c 24))
+  (go (<! (timeout  200)) (>! c 25))
+  (go (<! (timeout  356)) (>! c 26))
 
-;; ;;   (go (<! (timeout 3000)) (>! c 23)
-;; ;;       (<! (timeout  900)) (>! c 24)
-;; ;;       (<! (timeout  200)) (>! c 25)
-;; ;;       (<! (timeout  356)) (>! c 26)))
+  (go (<! (timeout  300)) (>! c 23)
+      (<! (timeout  900)) (>! c 24)
+      (<! (timeout  200)) (>! c 25)
+      (<! (timeout  356)) (>! c 26)))
 
 ;; #_ (let [c (chan)]
 ;;   (go-loop []
