@@ -20,11 +20,17 @@
 
 (defn main-view []
   [:div.container
-   [:h2 (str "You've clicked " @counter " times.")]
+   [:h2 (str "Kliknąłeś " @counter " raz(y).")]
    [:button.btn.btn-success {:on-click #(swap!  counter inc) :type "button"} "Add One"]
    [:button.btn.btn-danger  {:on-click #(reset! counter   0) :type "button"} "Zero"]
    [hidbutton "Hide me !!!"]
    [hidbutton "Hide me too !!!"]])
+
+(println (list   'a 'b 'c 'd))   ;; Lista jednok.
+(println (hash-map "a" 1 "b" 2)) ;; Mapa
+
+(println (vector 'a 'b 'c 'd)) ;; Wektor
+
 
 ;; INSTRUMENTATION
 
@@ -39,6 +45,8 @@
 
 (defonce start
   (init))
+
+
 
 ;; ;; ASYNC
 ;;
@@ -76,22 +84,22 @@
        (>! c 23)
        ))
 
-(let [c (chan)
-      t (timeout 2000)]
-  (go
-    (alt!
-      c ([v] (.log js/console (str "Odebrałem wartość " v " z kanału c")))
-      t ([v] (.log js/console (str "Upłynął czas 2s po których odebrałem " v)))))
+;; (let [c (chan)
+;;       t (timeout 2000)]
+;;   (go
+;;     (alt!
+;;       c ([v] (.log js/console (str "Odebrałem wartość " v " z kanału c")))
+;;       t ([v] (.log js/console (str "Upłynął czas 2s po których odebrałem " v)))))
 
-  (go (<! (timeout 1000)) (>! c 23))
-  (go (<! (timeout  900)) (>! c 24))
-  (go (<! (timeout  200)) (>! c 25))
-  (go (<! (timeout  356)) (>! c 26))
+;;   (go (<! (timeout 1000)) (>! c 23))
+;;   (go (<! (timeout  900)) (>! c 24))
+;;   (go (<! (timeout  200)) (>! c 25))
+;;   (go (<! (timeout  356)) (>! c 26))
 
-  (go (<! (timeout  300)) (>! c 23)
-      (<! (timeout  900)) (>! c 24)
-      (<! (timeout  200)) (>! c 25)
-      (<! (timeout  356)) (>! c 26)))
+;;   (go (<! (timeout  300)) (>! c 23)
+;;       (<! (timeout  900)) (>! c 24)
+;;       (<! (timeout  200)) (>! c 25)
+;;       (<! (timeout  356)) (>! c 26)))
 
 ;; #_ (let [c (chan)]
 ;;   (go-loop []
