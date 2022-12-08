@@ -11,6 +11,8 @@
 
 (enable-console-print!)
 
+;; sample
+
 ;; VIEW
 (defn hidbutton
   [label]
