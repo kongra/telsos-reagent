@@ -11,7 +11,11 @@
 
 (enable-console-print!)
 
-;; sample
+(defrecord Person
+    [email
+     first-name
+     last-name
+     age])
 
 ;; VIEW
 (defn hidbutton
@@ -38,41 +42,6 @@
 
 (defn- react-keys []
   (iterate inc 0))
-
-;; Solution to the Euler14 problem
-(defn is-even?
-  [n]
-  (zero? (bit-and n 1)))
-
-(defn collatz-trans
-  [n]
-  (if (is-even? n)
-    (/ n 2)
-
-    (inc (* 3 n))))
-
-(defn collatz-len
-  [n]
-  (loop [result 1
-         n      n]
-
-    (if (= n 1)
-      result
-      (recur (inc result) (collatz-trans n)))))
-
-(defn euler14
-  [n]
-  (loop [maxlen 0
-         j      0
-         i      1]
-
-    (if (= i n)
-      [j maxlen]
-
-      (let [len (collatz-len i)]
-        (if (> len maxlen)
-          (recur len    i (inc i))
-          (recur maxlen j (inc i)))))))
 
 ;; 1000000
 (defn main-view []
@@ -129,18 +98,22 @@
 
 
 
-#_(let [c (chan)]
-    (go
-      (.log js/console "--2-start")
-      (>! c 15)
-      (>! c 16)
-      (.log js/console "--2-end"))
+(let [c (chan)]
+  (go
+    (println "--2-start")
+    (<! (timeout 3000))
+    (>! c 15)
+    (>! c 16)
+    (println "--2-end"))
 
-    (go
-      (.log js/console "--1-start")
-      (.log js/console (<! c))
-      (.log js/console (<! c))
-      (.log js/console "--1-end")))
+  (go
+    (println "--1-start")
+    (<! (timeout 6000))
+    (println "--1" (<! c))
+    (println "--1" (<! c))
+    (println "--1-end")))
+
+
 
 #_(go
     (.log js/console "Hello")
