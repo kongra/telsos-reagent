@@ -1,0 +1,43 @@
+{:source-paths
+ ["src/main/cljs"]
+
+ :nrepl
+ {:port 3333}
+
+ :dev-http
+ {8085 "resources/public"}
+
+ :jvm-opts
+ ["-server"
+  "-Xmx2G"
+  "-XX:-OmitStackTraceInFastThrow"
+  "-XX:+UseStringDeduplication"
+  "-Dclojure.compiler.direct-linking=false"]
+
+ :dependencies
+ [[reagent "1.2.0"]
+  [nano-id "1.1.0"]]
+
+ :builds
+ {:dev {:target     :browser
+        :output-dir "resources/public/assets/uix/js"
+        :asset-path "/assets/uix/js"
+        :modules    {:main {:init-fn retemp-new.core/start!}}
+        :devtools   {:after-load retemp-new.core/after-load!}
+
+        :compiler-options
+        {:optimizations      :none
+         :elide-asserts      false
+         :warnings-as-errors false
+         :output-feature-set :es-next}}
+
+  :prod {:target     :browser
+         :output-dir "resources/public/assets/uix/js"
+         :asset-path "/assets/uix/js"
+         :modules    {:main {:init-fn retemp-new.core/start!}}
+
+         :compiler-options
+         {:optimizations      :advanced
+          :elide-asserts      false
+          :warnings-as-errors true
+          :output-feature-set :es-next}}}}
