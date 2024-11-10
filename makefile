@@ -1,7 +1,9 @@
 watch:
+	@git rev-parse HEAD > resources/public/.commit_hash
 	@npx shadow-cljs watch dev
 
 release:
+	@git rev-parse HEAD > resources/public/.commit_hash
 	@npx shadow-cljs release prod
 
 clean:

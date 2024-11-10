@@ -1,13 +1,14 @@
-(ns retemp-new.core
+(ns retemp.core
   (:require
    ["react" :as React]
    ["react-dom/client" :as react-client]
-   [reagent.core :as r]))
+   [reagent.core :as r]
+   [retemp.commit-hash]))
 
 ;; APP COMPONENTS
 (defn- html-root []
-  (println "retemp-new")
-  [:div.sample "Hello retemp-new"])
+  (println "Hello retemp!")
+  [:div.sample "Hello retemp!"])
 
 ;; APP INSTRUMENTATION
 (defn- render-root!
