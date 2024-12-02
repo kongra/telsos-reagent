@@ -23,8 +23,8 @@
  {:dev {:target     :browser
         :output-dir "resources/public/assets/js"
         :asset-path "/assets/js"
-        :modules    {:retemp {:init-fn retemp.core/start!}}
-        :devtools   {:after-load retemp.core/after-load!}
+        :modules    {:telsos.fe {:init-fn telsos.fe.core/start!}}
+        :devtools   {:after-load telsos.fe.core/after-load!}
 
         :compiler-options
         {:optimizations      :none
@@ -35,7 +35,7 @@
   :prod {:target     :browser
          :output-dir "resources/public/assets/js"
          :asset-path "/assets/js"
-         :modules    {:retemp {:init-fn retemp.core/start!}}
+         :modules    {:telsos.fe {:init-fn telsos.fe.core/start!}}
 
          :compiler-options
          {:optimizations      :advanced

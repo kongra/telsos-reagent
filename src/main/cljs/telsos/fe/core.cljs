@@ -1,19 +1,14 @@
-(ns retemp.core
+(ns telsos.fe.core
   (:require
    ["react" :as React]
    ["react-dom/client" :as react-client]
    [reagent.core :as r]
-   [retemp.commit-hash]))
+   [telsos.fe.commit-hash]
+   [telsos.fe.main :refer [html-main]]))
 
-;; APP COMPONENTS
-(defn- html-root []
-  (println "Hello retemp!")
-  [:div.sample "Hello retemp!"])
-
-;; APP INSTRUMENTATION
 (defn- render-root!
   [root]
-  (->> [:> React/StrictMode [html-root]]
+  (->> [:> React/StrictMode [html-main]]
        (r/as-element)
        (.render root)))
 
