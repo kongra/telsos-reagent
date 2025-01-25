@@ -5,19 +5,20 @@
  {:port 3333}
 
  :dev-http
- {8085 "resources/public"}
+ {3000 "resources/public"}
 
  :jvm-opts
  ["-server"
   "-Xmx2G"
   "-XX:-OmitStackTraceInFastThrow"
   "-XX:+UseStringDeduplication"
-  "-Dclojure.compiler.direct-linking=false"]
+  "-Dclojure.compiler.direct-linking=true"]
 
  :dependencies
- [[cljs-http "0.1.48"]
-  [nano-id    "1.1.0"]
-  [reagent    "1.2.0"]]
+ [[cljs-http                     "0.1.48"]
+  [nano-id                        "1.1.0"]
+  [reagent                        "1.2.0"]
+  [com.github.kongra/telsos-lib "0.1.463"]]
 
  :builds
  {:dev {:target     :browser
