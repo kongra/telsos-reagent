@@ -1,6 +1,6 @@
-dev:
+watch-app:
 	@git rev-parse HEAD > resources/public/.commit_hash
-	@npx shadow-cljs watch dev
+	@npx shadow-cljs watch app
 
 release:
 	@git rev-parse HEAD > resources/public/.commit_hash
