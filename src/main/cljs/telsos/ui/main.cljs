@@ -1,4 +1,4 @@
-(ns telsos.fe.main
+(ns telsos.ui.main
   (:require
    [reagent.core :as r]))
 
@@ -17,11 +17,11 @@
   [:button {:on-click inc-count-atom} (str text " count: " @count-atom)])
 
 (defn ui-main []
-  (println "Hello telsos.fe!")
+  (println "ui-main")
   [:div
    [ui-button "Button 0"]
    [ui-spacer-v-10 "123"]
-   [:div.main "Hello telsos.fe! " @count-atom]
+   [:div.main "Hello World! " @count-atom]
    [ui-button "Button 1"]
    [ui-spacer-v-10 "456"]
    [ui-button "Button 2"]])

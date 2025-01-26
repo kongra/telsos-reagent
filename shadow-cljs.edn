@@ -24,8 +24,8 @@
  {:dev {:target     :browser
         :output-dir "resources/public/assets/js"
         :asset-path "/assets/js"
-        :modules    {:telsos.fe {:init-fn telsos.fe.core/start!}}
-        :devtools   {:after-load telsos.fe.core/after-load!}
+        :modules    {:telsos.ui {:init-fn telsos.ui.core/start}}
+        :devtools   {:after-load telsos.ui.core/after-load}
 
         :compiler-options
         {:optimizations      :none
@@ -36,7 +36,7 @@
   :prod {:target     :browser
          :output-dir "resources/public/assets/js"
          :asset-path "/assets/js"
-         :modules    {:telsos.fe {:init-fn telsos.fe.core/start!}}
+         :modules    {:telsos.ui {:init-fn telsos.ui.core/start}}
 
          :compiler-options
          {:optimizations      :advanced

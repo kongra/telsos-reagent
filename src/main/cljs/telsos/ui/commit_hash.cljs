@@ -1,4 +1,4 @@
-(ns telsos.fe.commit-hash
+(ns telsos.ui.commit-hash
   (:require
    [cljs-http.client :as http]
    [cljs.core.async :refer [<! go]]

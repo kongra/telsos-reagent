@@ -1,12 +1,12 @@
-(ns telsos.fe.core
+(ns telsos.ui.core
   (:require
    ["react" :as React]
    ["react-dom/client" :as react-client]
    [reagent.core :as r]
-   [telsos.fe.commit-hash]
-   [telsos.fe.main :refer [ui-main]]))
+   [telsos.ui.commit-hash]
+   [telsos.ui.main :refer [ui-main]]))
 
-(defn- render-root!
+(defn- render-root
   [root]
   (->> [:> React/StrictMode [ui-main]]
        (r/as-element)
@@ -14,12 +14,12 @@
 
 (defonce root-atom (atom nil))
 
-(defn after-load! []
-  (render-root! @root-atom))
+(defn after-load []
+  (render-root @root-atom))
 
-(defn start! []
+(defn start []
   (->> "core"
        (js/document.getElementById)
        (react-client/createRoot)
        (reset! root-atom)
-       (render-root!)))
+       (render-root)))
