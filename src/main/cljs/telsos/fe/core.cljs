@@ -4,11 +4,11 @@
    ["react-dom/client" :as react-client]
    [reagent.core :as r]
    [telsos.fe.commit-hash]
-   [telsos.fe.main :refer [html-main]]))
+   [telsos.fe.main :refer [ui-main]]))
 
 (defn- render-root!
   [root]
-  (->> [:> React/StrictMode [html-main]]
+  (->> [:> React/StrictMode [ui-main]]
        (r/as-element)
        (.render root)))
 
