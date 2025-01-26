@@ -5,9 +5,19 @@ watch-app:
 release:
 	@git rev-parse HEAD > resources/public/.commit_hash
 	@npx shadow-cljs release prod
+	@npx tailwindcss -i ./src/css/main.css -o resources/public/assets/css/main.css --minify
+
+watch-css:
+	@npx tailwindcss -i ./src/css/main.css -o resources/public/assets/css/main.css --watch
 
 clean:
 	@rm -rf resources/public/assets/
+
+clean-all:
+	@rm -rf resources/public/assets/
+	@rm -rf node_modules/
+	@rm -rf .shadow-cljs/
+	@rm -f package-lock.json
 
 clj-kondo:
 	@clj-kondo --config .clj-kondo/config.edn --lint  src/

@@ -1,27 +1,32 @@
 (ns telsos.ui.main
   (:require
-   [reagent.core :as r]))
+   [reagent.core :as r]
+   [telsos.ui.css :refer [twc twcs]]))
 
 (def count-atom (r/atom 0))
 
 (defn inc-count-atom [_]
-  (println "inc-count-atom")
   (r/rswap! count-atom inc))
 
-(defn ui-spacer-v-10 [text]
-  (println "ui-spacer-v-10" :text text)
+(defn spacer-v-10 [text]
   [:div {:style {:height "20px"}} (str text)])
 
-(defn ui-button [text]
-  (println "ui-button" :text text)
-  [:button {:on-click inc-count-atom} (str text " count: " @count-atom)])
+(def button-border-twc
+  (twc ["border-rose-500/75" "border-4"]))
+
+(def button-twc
+  (twc ["bg-indigo-300" button-border-twc "px-8 py-4 w-[20rem]"]))
+
+(defn button [text]
+  [:button
+   {:class (twcs button-twc)
+    :on-click inc-count-atom} (str text " count: " @count-atom)])
 
 (defn ui-main []
-  (println "ui-main")
   [:div
-   [ui-button "Button 0"]
-   [ui-spacer-v-10 "123"]
+   [button "Button 0"]
+   [spacer-v-10 "123"]
    [:div.main "Hello World! " @count-atom]
-   [ui-button "Button 1"]
-   [ui-spacer-v-10 "456"]
-   [ui-button "Button 2"]])
+   [button "Button 1"]
+   [spacer-v-10 "456"]
+   [button "Button 2"]])

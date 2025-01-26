@@ -31,7 +31,19 @@
         {:optimizations      :none
          :elide-asserts      false
          :warnings-as-errors false
-         :output-feature-set :es-next}}
+         :output-feature-set :es-next
+
+         ;; ;; In shadow-cljs.edn
+         ;; :app {:compiler-options
+         ;;       {:closure-defines
+         ;;        {my-app.config/DEBUG true
+         ;;         my-app.config/API_URL "http://localhost:3000"}}}
+         ;;
+         ;; ;; In your code
+         ;; (goog-define DEBUG false)
+         ;; (goog-define API_URL "")
+         ;; ;; These values will be different in dev vs prod builds
+         :closure-defines {}}}
 
   :prod {:target     :browser
          :output-dir "resources/public/assets/js"
