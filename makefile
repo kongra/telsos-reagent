@@ -5,10 +5,10 @@ watch-app:
 release:
 	@git rev-parse HEAD > resources/public/.commit_hash
 	@npx shadow-cljs release prod
-	@npx tailwindcss -i ./src/css/main.css -o resources/public/assets/css/main.css --minify
+	@npx @tailwindcss/cli -i ./src/css/main.css -o resources/public/assets/css/main.css --minify
 
 watch-css:
-	@npx tailwindcss -i ./src/css/main.css -o resources/public/assets/css/main.css --watch
+	@npx @tailwindcss/cli -i ./src/css/main.css -o resources/public/assets/css/main.css --watch
 
 clean:
 	@rm -rf resources/public/assets/
